@@ -3,10 +3,11 @@ name: Build
 on:
   push:
   pull_request:
+  schedule:
+    - cron: "0 0 * * 0"
 
 jobs:
-  plugin_test:
-    name: asdf plugin test
+  test:
     strategy:
       matrix:
         os:
@@ -14,7 +15,10 @@ jobs:
           - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - name: asdf_plugin_test
-        uses: asdf-vm/actions/plugin-test@v4
-        with:
-          command: gsc -v
+      - uses: actions/checkout@v4
+      - uses: asdf-vm/actions/setup@v4
+
+      - run: asdf plugin add gambit $GITHUB_WORKSPACE
+      - run: asdf install gambit latest
+      - run: asdf set gambit latest
+      - run: which gsc >/dev/null 2>&1 && gsc -h | grep -q 'This is the Gambit Scheme compiler.'
