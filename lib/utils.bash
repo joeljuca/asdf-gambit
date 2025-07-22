@@ -58,7 +58,9 @@ install_version() {
 	fi
 
 	(
-		alias make="make -j$(getconf _NPROCESSORS_ONLN)"
+		make() {
+			command make -j"$(getconf _NPROCESSORS_ONLN)" "$@"
+		}
 
 		mkdir -p "$install_path"
 
