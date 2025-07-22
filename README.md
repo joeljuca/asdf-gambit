@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-gambit [![Build](https://github.com/joeljuca/asdf-gambit/actions/workflows/build.yml/badge.svg)](https://github.com/joeljuca/asdf-gambit/actions/workflows/build.yml) [![Lint](https://github.com/joeljuca/asdf-gambit/actions/workflows/lint.yml/badge.svg)](https://github.com/joeljuca/asdf-gambit/actions/workflows/lint.yml)
+# [asdf-gambit](https://github.com/joeljuca/asdf-gambit) [![Build](https://github.com/joeljuca/asdf-gambit/actions/workflows/build.yml/badge.svg)](https://github.com/joeljuca/asdf-gambit/actions/workflows/build.yml) [![Lint](https://github.com/joeljuca/asdf-gambit/actions/workflows/lint.yml/badge.svg)](https://github.com/joeljuca/asdf-gambit/actions/workflows/lint.yml)
 
 [Gambit Scheme](https://gambitscheme.org) plugin for the [asdf version manager](https://asdf-vm.com).
 
