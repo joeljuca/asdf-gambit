@@ -17,4 +17,3 @@ jobs:
       - uses: GoogleCloudPlatform/release-please-action@v4
         with:
           release-type: simple
-          pull-request-title-pattern: "chore: release ${version}"
