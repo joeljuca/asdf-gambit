@@ -24,7 +24,7 @@ jobs:
 
       - if: runner.os == 'macOS'
         run: |
-          brew info gcc
+          brew info gcc | grep 'stable 15'
 
       - run: asdf plugin add gambit $GITHUB_WORKSPACE
       - run: asdf install gambit latest
