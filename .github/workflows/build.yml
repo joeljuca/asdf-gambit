@@ -21,12 +21,10 @@ jobs:
       - if: runner.os == 'macOS'
         run: |
           brew update && brew install gcc
-          brew info gcc | grep 'gcc: stable 15'
 
-          echo "CC=$(brew --prefix)/bin/gcc-15" >> $GITHUB_ENV
-          echo "CXX=$(brew --prefix)/bin/g++-15" >> $GITHUB_ENV
-          echo "LDFLAGS=-L$(brew --prefix)/lib" >> $GITHUB_ENV
-          echo "CPPFLAGS=-I$(brew --prefix)/include" >> $GITHUB_ENV
+      - if: runner.os == 'macOS'
+        run: |
+          brew info gcc | grep 'gcc: stable 15'
 
       - run: asdf plugin add gambit $GITHUB_WORKSPACE
       - run: asdf install gambit latest
