@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -xeuo pipefail
 
 # TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for gambit.
 GH_REPO="https://github.com/gambit/gambit"
@@ -49,8 +49,11 @@ download_release() {
 }
 
 install_version() {
+	# install_type eg.: version
 	local install_type="$1"
+	# version eg.: X.Y.Z
 	local version="$2"
+	# install_path eg.: /Users/runner/.asdf/installs/gambit/4.9.7
 	local install_path="${3%/bin}"
 
 	if [ "$install_type" != "version" ]; then
@@ -62,11 +65,19 @@ install_version() {
 			command make -j"$(getconf _NPROCESSORS_ONLN)" "$@"
 		}
 
-		mkdir -p "$install_path"
+		configure="./configure --enable-dynamic-clib --enable-march=native --enable-single-host --enable-trust-c-tco --prefix=${install_path}"
 
+		# $install_path => /Users/runner/.asdf/installs/gambit/X.Y.Z
+		mkdir -p "$install_path"
+		# $ASDF_DOWNLOAD_PATH => /Users/runner/.asdf/downloads/gambit/X.Y.Z
 		cd "$ASDF_DOWNLOAD_PATH"
-		./configure --enable-single-host --prefix="${install_path}"
-		make check
+
+		if [ "$(uname)" = "Darwin" ]; then
+			# ./configure CC=gcc-15 --enable-dynamic-clib --enable-march=native --enable-shared --enable-single-host --enable-trust-c-tco --prefix="${install_path}"
+			$configure="$configure CC=gcc-15 --enable-shared"
+		fi
+
+		$configure
 		make install
 
 		# TODO: Assert gambit executable exists.

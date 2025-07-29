@@ -20,6 +20,21 @@ jobs:
       # v4.0.0. https://github.com/asdf-vm/actions/tree/v4.0.0
       - uses: asdf-vm/actions/setup@1902764435ca0dd2f3388eea723a4f92a4eb8302
 
+      - if: runner.os == 'macOS'
+        run: |
+          brew update && brew install gcc
+
+      - if: runner.os == 'macOS'
+        run: |
+          brew info gcc | grep 'stable 15'
+
+      - if: runner.os == 'macOS'
+        run: |
+          echo "CC=$(brew --prefix)/bin/gcc-15" >> $GITHUB_ENV
+          echo "CXX=$(brew --prefix)/bin/g++-15" >> $GITHUB_ENV
+          echo "LDFLAGS=-L$(brew --prefix)/lib" >> $GITHUB_ENV
+          echo "CPPFLAGS=-I$(brew --prefix)/include" >> $GITHUB_ENV
+
       - run: asdf plugin add gambit $GITHUB_WORKSPACE
       - run: asdf install gambit latest
       - run: asdf set gambit latest
