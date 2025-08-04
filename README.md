@@ -1,10 +1,10 @@
-<div align="center">
+# [asdf-gambit](https://github.com/joeljuca/asdf-gambit)
 
-# [asdf-gambit](https://github.com/joeljuca/asdf-gambit) [![Build](https://github.com/joeljuca/asdf-gambit/actions/workflows/build.yml/badge.svg)](https://github.com/joeljuca/asdf-gambit/actions/workflows/build.yml) [![Lint](https://github.com/joeljuca/asdf-gambit/actions/workflows/lint.yml/badge.svg)](https://github.com/joeljuca/asdf-gambit/actions/workflows/lint.yml)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/joeljuca/asdf-gambit/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/joeljuca/asdf-gambit/tree/main "macOS builds")
+[![Build](https://github.com/joeljuca/asdf-gambit/actions/workflows/build.yml/badge.svg)](https://github.com/joeljuca/asdf-gambit/actions/workflows/build.yml "Linux builds")
+[![Lint](https://github.com/joeljuca/asdf-gambit/actions/workflows/lint.yml/badge.svg)](https://github.com/joeljuca/asdf-gambit/actions/workflows/lint.yml)
 
 [Gambit Scheme](https://gambitscheme.org) plugin for the [asdf version manager](https://asdf-vm.com).
-
-</div>
 
 # Contents
 
