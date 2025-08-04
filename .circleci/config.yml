@@ -20,7 +20,8 @@ workflows:
 jobs:
   test:
     macos:
-      xcode: 15.0.0
+      xcode: 16.4.0
+    resource_class: macos.m1.medium.gen1
     steps:
       - checkout
       - run: |
