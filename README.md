@@ -3,6 +3,7 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/joeljuca/asdf-gambit/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/joeljuca/asdf-gambit/tree/main "macOS builds")
 [![Build](https://github.com/joeljuca/asdf-gambit/actions/workflows/build.yml/badge.svg)](https://github.com/joeljuca/asdf-gambit/actions/workflows/build.yml "Linux builds")
 [![Lint](https://github.com/joeljuca/asdf-gambit/actions/workflows/lint.yml/badge.svg)](https://github.com/joeljuca/asdf-gambit/actions/workflows/lint.yml)
+[![Author](https://img.shields.io/badge/joeljuca.com-white?logo=google-chrome)](https://joeljuca.com)
 
 [asdf](https://asdf-vm.com) plugin for [Gambit Scheme](https://gambitscheme.org).
 
