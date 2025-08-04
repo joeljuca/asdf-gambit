@@ -1,0 +1,45 @@
+version: 2.1
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - test
+
+  weekly:
+    jobs:
+      - test
+    triggers:
+      - schedule:
+          cron: "0 0 * * 0"
+          filters:
+            branches:
+              only:
+                - main
+
+jobs:
+  test:
+    macos:
+      xcode: 15.0.0
+    steps:
+      - checkout
+      - run: |
+          git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.18.0
+          echo 'export ASDF_DIR="$HOME/.asdf"' >> $BASH_ENV
+          echo 'export PATH="$ASDF_DIR/bin:$ASDF_DIR/shims:$PATH"' >> $BASH_ENV
+          source $BASH_ENV
+      - run: |
+          echo 'source ~/.asdf/asdf.sh' >> $BASH_ENV
+          source $BASH_ENV
+      - run: |
+          source ~/.asdf/asdf.sh
+          asdf plugin add gambit $CIRCLE_WORKING_DIRECTORY
+      - run: |
+          source ~/.asdf/asdf.sh
+          asdf install gambit latest
+      - run: |
+          source ~/.asdf/asdf.sh
+          asdf global gambit latest
+      - run: |
+          source ~/.asdf/asdf.sh
+          which gsc >/dev/null 2>&1 && gsc -h | grep -q 'This is the Gambit Scheme compiler.'
